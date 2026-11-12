@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* Design tokens — "sun & soil": warm laterite neutrals, deep tea-green ink, sun-amber action */
+@theme {
+  --color-bg: #f7f2ea;
+  --color-surface: #fffdf9;
+  --color-sunken: #efe7da;
+  --color-line: #e2d6c4;
+  --color-muted: #6b6257;
+  --color-ink: #1d2a24;
+  --color-forest: #1f4e3d;
+  --color-forest-deep: #143528;
+  --color-sun: #f2a516;
+  --color-sun-deep: #c97f00;
+  --color-clay: #b4532a;
+  --color-ok: #2f7d4f;
+  --color-warn: #a86400;
+
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sinhala: "Noto Sans Sinhala", ui-sans-serif, sans-serif;
+
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+[lang="si"] {
+  font-family: var(--font-sinhala);
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-sun);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* sunrise grain behind hero */
+.sun-field {
+  background:
+    radial-gradient(60% 80% at 85% 10%, rgba(242, 165, 22, 0.28), transparent 60%),
+    radial-gradient(50% 60% at 10% 100%, rgba(31, 78, 61, 0.18), transparent 70%),
+    var(--color-bg);
+}
+
+.reveal {
+  animation: rise 600ms var(--ease-out-soft) both;
+}
+.reveal-2 { animation-delay: 90ms; }
+.reveal-3 { animation-delay: 180ms; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { animation: none; }
+}
